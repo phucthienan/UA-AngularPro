@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AuthFormModule } from './auth-form/auth-form.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    AuthFormModule
   ],
   bootstrap: [
     AppComponent
@@ -14,4 +17,4 @@ import { AppComponent } from './app.component';
     AppComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }
