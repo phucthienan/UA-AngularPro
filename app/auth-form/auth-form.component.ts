@@ -19,6 +19,7 @@ import { User } from './auth-form.interface';
 
 @Component({
   selector: 'auth-form',
+  styles: [`.email { border-color: #9f72e6 }`],
   template: `
     <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
       <ng-content select="h3"></ng-content>
@@ -57,7 +58,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   }
 
   ngAfterContentInit() {
-    console.log(this.email);
+    this.email.nativeElement.setAttribute('placeholder', 'Enter your email address');
+    this.email.nativeElement.classList.add('email');
+    this.email.nativeElement.focus();
     if (this.remembers) {
       this.remembers.forEach(remember => {
         remember.checked.subscribe((checked: boolean) => this.showMessage = checked);
