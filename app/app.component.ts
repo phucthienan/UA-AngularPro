@@ -12,7 +12,9 @@ import {
   template: `
     <div>
       <div #entry></div>
-      <template #tmpl>Ultimate Angular</template>
+      <template #tmpl let-name let-location="location">
+        {{name}} : {{location}}
+      </template>
     </div>
   `
 })
@@ -21,6 +23,9 @@ export class AppComponent implements AfterContentInit {
   @ViewChild('tmpl') tmpl: TemplateRef<any>;
 
   ngAfterContentInit() {
-    this.entry.createEmbeddedView(this.tmpl);
+    this.entry.createEmbeddedView(this.tmpl, {
+      $implicit: 'Ultimate Angular',
+      location: 'England, UK'
+    });
   }
 }
