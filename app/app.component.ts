@@ -5,11 +5,19 @@ import { Component} from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div>
-      <ng-container [ngTemplateOutlet]="tmpl"></ng-container>
-      <template #tmpl>
-        Ultimate Angular
+      <ng-container 
+        [ngTemplateOutlet]="tmpl"
+        [ngOutletContext]="context">
+      </ng-container>
+      <template #tmpl let-name let-location="location">
+        {{name}} : {{location}}
       </template>
     </div>
   `
 })
-export class AppComponent { }
+export class AppComponent {
+  context = {
+    $implicit: 'Ultimate Angular',
+    location: 'England, UK'
+  };
+ }
