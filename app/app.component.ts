@@ -1,6 +1,7 @@
 import {
   Component,
   AfterContentInit,
+  ComponentRef,
   ViewChild,
   ViewContainerRef,
   ComponentFactoryResolver
@@ -15,20 +16,28 @@ import { User } from './auth-form/auth-form.interface';
   styleUrls: ['app.component.scss'],
   template: `
     <div>
+      <button (click)="destroyComponent()">
+        Destroy
+      </button>
       <div #entry></div>
     </div>
   `
 })
 export class AppComponent implements AfterContentInit {
   @ViewChild('entry', { read: ViewContainerRef }) entry: ViewContainerRef;
+  component: ComponentRef<AuthFormComponent>;
 
   constructor(private resolver: ComponentFactoryResolver) { }
 
   ngAfterContentInit() {
     const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
-    const component = this.entry.createComponent(authFormFactory);
-    component.instance.title = 'Create account';
-    component.instance.submitted.subscribe(this.loginUser);
+    this.component = this.entry.createComponent(authFormFactory);
+    this.component.instance.title = 'Create account';
+    this.component.instance.submitted.subscribe(this.loginUser);
+  }
+
+  destroyComponent() {
+    this.component.destroy();
   }
 
   loginUser(user: User) {
