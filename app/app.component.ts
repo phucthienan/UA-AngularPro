@@ -1,23 +1,14 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
     <div>
-      <ng-container 
-        [ngTemplateOutlet]="tmpl"
-        [ngOutletContext]="context">
-      </ng-container>
-      <template #tmpl let-name let-location="location">
-        {{name}} : {{location}}
-      </template>
+      <example-one></example-one>
+      <example-two></example-two>
+      <example-three></example-three>
     </div>
   `
 })
-export class AppComponent {
-  context = {
-    $implicit: 'Ultimate Angular',
-    location: 'England, UK'
-  };
- }
+export class AppComponent { }
