@@ -1,21 +1,32 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'example-one',
-  encapsulation: ViewEncapsulation.Emulated,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     .example-one {
-      background: #9f72e6;
       font-size: 19px;
-      color: #fff;
       margin-bottom: 50px;
-      padding: 10px 20px;
     }
   `],
   template: `
     <div class="example-one">
-      Example One
+      <h4>{{user.name}}</h4>
+      <h5>{{user.location}}</h5>
+      {{user.email}}
+      <button (click)="update()">Internal update</button>
+      <p>* should not update</p>
     </div>
   `,
 })
-export class ExampleOneComponent { }
+export class ExampleOneComponent {
+  @Input() user;
+
+  update() {
+    this.user.name = 'Angular.io'
+  }
+}
