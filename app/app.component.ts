@@ -5,34 +5,14 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div>
-      <button (click)="addProp()">Add property</button>
-      <button (click)="changeName()">Change name property</button>
-      <button (click)="changeUser()">Change user object</button>
-      <div class="users">
-        <example-one [user]="user"></example-one>
-        <example-two [user]="user"></example-two>
-      </div>
+      <label>Credit Card Number</label>
+      <input 
+        name="credit-card" 
+        type="text"
+        placeholder="Enter your 16-digit card number"
+        credit-card>
     </div>
   `
 })
-export class AppComponent { 
-  user: any = {
-    name: 'Angular Fundamentals',
-    location: 'England, UK'
-  }
-  
-  addProp() {
-    this.user.email = 'angular@angular.io';
-  }
-
-  changeName() {
-    this.user.name = 'Angular Pro'
-  }
-
-  changeUser() {
-    this.user = {
-      name: 'Ultimate Angular',
-      location: 'London, UK'
-    }
-  }
+export class AppComponent {
 }

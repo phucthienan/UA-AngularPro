@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AuthFormModule } from './auth-form/auth-form.module';
-import { ViewEncapsulationModule } from './view-encapsulation/view-encapsulation.module';
-
 import { AppComponent } from './app.component';
+import { CreditCardDirective } from './credit-card/credit-card.directive';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    AuthFormModule,
-    ViewEncapsulationModule
+    BrowserModule
   ],
   bootstrap: [
     AppComponent
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    CreditCardDirective
   ]
 })
 export class AppModule { }
